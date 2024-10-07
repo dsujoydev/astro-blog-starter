@@ -32,7 +32,7 @@ const filteredPosts = posts.filter((post: Post) =>
 ---
 
 <BaseLayout pageTitle={tag}>
-  <p>Posts tagged with {tag}</p>
+  <p class="text-red-400 text-3xl">Posts tagged with {tag}</p>
   <ul>
     {
       filteredPosts.map((post: Post) => (
@@ -42,4 +42,5 @@ const filteredPosts = posts.filter((post: Post) =>
       ))
     }
   </ul>
+  <button class="btn">Hello daisyUI</button>
 </BaseLayout>
