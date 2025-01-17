@@ -1,7 +1,29 @@
 ---
 import BlogPost from "../components/BlogPost.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
-const allPosts = await Astro.glob("./posts/*.md");
+
+// Define the structure of your frontmatter
+interface Frontmatter {
+  title: string;
+  pubDate?: Date;
+  description?: string;
+  author?: string;
+  image?: {
+    url: string;
+    alt: string;
+  };
+  tags?: string[];
+}
+
+// Define the structure of a blog post
+interface BlogPostFile {
+  url: string;
+  frontmatter: Frontmatter;
+}
+
+const allPosts = Object.values(
+  import.meta.glob<BlogPostFile>("./posts/*.md", { eager: true }),
+);
 ---
 
 <BaseLayout>
